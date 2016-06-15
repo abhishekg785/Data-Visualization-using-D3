@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>D3 1</title>
+</head>
+<body>
+  <div id = 'visualData'>
+
+  </div>
+  <script src = 'https://code.jquery.com/jquery-2.1.3.min.js'></script>
+  <script src = 'http://d3js.org/d3.v3.min.js' charset = 'utf-8'></script>
+  <script>
+    (function($,d){
+      $(document).ready(function(){
+        var circleRadiiArr = [40 ,20 ,10],
+            visualData = d3.select('#visualData');
+            visualSVG = visualData.append('svg')
+                  .attr('height',200)
+                  .attr('width',100);
+        visualSVG.append('circle')
+                  .attr('cx',50)
+                  .attr('cy',50)
+                  .attr('r',25)
+                  .style('fill',"lightblue")
+      });
+    })(jQuery,document);
+  </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+$("document").ready(function(){
+	var svgHeight = 100,
+	    svgWidth = 600,
+	    barPadding = 1,
+	    dataset = [12, 19, 8, 17, 22, 9, 15, 12, 22, 25, 17, 12, 25, 16],
+	    playButton = $('#playButton'),
+	    pauseButton = $('#pauseButton'),
+	    increaseVolume = $('#increaseVolume'),
+	    decreaseVolume = $('#decreaseVolume'),
+	    audioElement = $('#audioElement');
+        console.log(audioElement);
+        playButton.on('click',function(){
+		audioElement.play();
+	});
+
+    pauseButton.on('click',function(){
+		audioElement.pause();
+	});
+
+	increaseVolume.on('click',function(){
+		audioElement.volume += 0.1;
+	});
+
+	decreaseVolume.on('click',function(){
+		audioElement.volume -= 0.1;
+	});
+
+	
+	function createSVG(parent,height,width){
+		return d3.select(parent)
+			         .append('svg')
+		             .attr('height',height)
+			         .attr('width',width);
+	}
+
+	var graph = createSVG('#graph',svgHeight,svgWidth);
+	graph.selectAll('rect')
+		.data(dataset)
+		.enter()
+		.append('rect')
+		.attr('width', svgWidth / dataset.length - barPadding)
+		.attr('height', function(d){
+			console.log(d);
+			return d*4;
+		})
+	        .attr('x', function(d,i){
+			return i*(svgWidth / dataset.length);
+		})
+		.attr('y', function(d){
+			return svgHeight - (d * 4);
+		});
+
+});

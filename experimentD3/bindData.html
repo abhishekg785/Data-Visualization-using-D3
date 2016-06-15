@@ -1,0 +1,23 @@
+<html>
+<head>
+</head>
+<body>
+  <script src = 'https://code.jquery.com/jquery-2.1.3.min.js'></script>
+  <script src = 'http://d3js.org/d3.v3.min.js' charset = 'utf-8'></script>
+  <script>
+    var theData = [1,2,3,4,5];
+    var p =d3.select('body').selectAll('p')
+      .data(theData)
+      .enter()
+      .append('p')
+    console.log(p);
+
+    var div = d3.select('body').selectAll('div')
+      .data(theData)
+      .enter()
+      .append('div')
+      .text(data)
+    console.log(div);
+  </script>
+</body>
+</html>
